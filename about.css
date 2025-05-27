@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    cursor: pointer;
+}
+.app{
+    min-height: 100vh;
+    background: #1f242d;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+div.write-text-container{
+    /* border: 2px solid white; */
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+}
+div.write-text-container span{
+    color: transparent;
+    -webkit-text-stroke: 0.5px white;
+    position: relative;
+    /* to display text */
+    display: inline-block;
+    /* transition: all 1s; */
+    animation: display-text 8s linear infinite;
+    /* -4 +4 must match below */
+    animation-delay: calc(-4s*var(--i));
+}
+/* write text */
+div.write-text-container span::before{
+    content: attr(data-text);
+    color: greenyellow;
+    position: absolute;
+    /* transition: all 1s; */
+    /* border: 2px solid red; */
+    border-right: 5px solid greenyellow;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    /* -4 +4 must match above */
+    animation: fill-text 4s linear infinite ;
+    
+}
+@keyframes fill-text {
+    25%,
+    85%{
+        width: 100%;
+    }
+}
+/* now one text after another */
+@keyframes display-text {
+    50%,
+    100%{
+        display: none ;
+        /* transform: scale(0.5); */
+        /* opacity: 0; */
+    }
+}
